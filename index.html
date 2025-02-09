@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Support Network</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>Emergency Support Network</h1>
+        <p>Your safety is our priority. We offer quick access to help in emergencies.</p>
+    </header>
+
+    <section class="resources">
+        <h2>Emergency Contacts</h2>
+        <ul>
+            <li><strong>Domestic Violence Hotline:</strong> 1-800-799-SAFE</li>
+            <li><strong>National Suicide Prevention Lifeline:</strong> 1-800-273-TALK</li>
+            <li><strong>Emergency Medical Services:</strong> 911</li>
+            <li><strong>Legal Aid Services:</strong> Police :- 100</li>
+            
+        </ul>
+    </section>
+
+    <section class="find-help">
+        <h2>Find Help Near You</h2>
+        <p>Use the map below to locate shelters, hospitals, and legal support services nearby.</p>
+        <div id="map" style="height: 400px;"></div>
+    </section>
+
+    <section class="resources">
+        <h2>Helpful Resources</h2>
+        <ul>
+            <li><a href="#">How to Prepare for an Emergency</a></li>
+            <li><a href="#">What to Do if You're in Immediate Danger</a></li>
+            <li><a href="#">How to Find Legal Support Quickly</a></li>
+        </ul>
+    </section>
+
+    <section class="emergency-sos">
+        <button id="sosButton" onclick="triggerSOS()">SOS - Help Me Now</button>
+    </section>
+
+    <footer>
+        <p>Emergency Support Network | Confidential and Supportive. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        function initMap() {
+            var map = L.map('map').setView([51.505, -0.09], 13); // Default location (London)
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Get user's current location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var userLat = position.coords.latitude;
+                    var userLng = position.coords.longitude;
+
+                    // Set view to user's location
+                    map.setView([userLat, userLng], 13);
+
+                    // Add a marker for user's location
+                    L.marker([userLat, userLng]).addTo(map)
+                        .bindPopup('You are here.').openPopup();
+                }, function(error) {
+                    console.log("Geolocation error: " + error.message);
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        function triggerSOS() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+
+            // Send SOS request to backend
+            fetch("http://localhost:5000/sos", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ latitude: userLat, longitude: userLng }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("SOS request sent! Help is on the way.");
+                console.log("SOS Response:", data);
+            })
+            .catch(error => console.error("Error sending SOS:", error));
+        });
+    } else {
+        alert("Geolocation is not supported by your browser.");
+    }
+}
+
+        
+        document.addEventListener("DOMContentLoaded", initMap);
+    </script>
+</body>
+</html>
