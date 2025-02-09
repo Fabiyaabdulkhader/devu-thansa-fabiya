@@ -78,10 +78,13 @@ node server.js
 #### **Screenshots**
 
  page of the Emergency Supporting System
-
+ https://drive.google.com/file/d/1L-HLpZR7wqRfMS3TYIJnHcIG6sxFvv9s/view?usp=drive_link 
 *SOS alert system in action*
+ https://drive.google.com/file/d/1bvnIWx-OjKAsuHcNpyl_edQ5AIcK49mn/view?usp=drive_link
 
 *Map displaying real-time user location*
+https://drive.google.com/file/d/1q93SxGqR9UO2xN4gLhJheZzxc0GLzqIy/view?usp=drive_link
+
 
 #### **Diagrams**
 
