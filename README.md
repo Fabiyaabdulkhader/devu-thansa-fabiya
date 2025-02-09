@@ -11,7 +11,7 @@
 
 ### Hosted Project Link
 
-[Project Link](#) *(Update with actual link)*
+[Project Link]([#](https://devu-thansa-fabiya-3wbl.vercel.app/)) 
 
 ### Project Description
 
