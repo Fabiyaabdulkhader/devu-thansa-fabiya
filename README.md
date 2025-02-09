@@ -112,19 +112,6 @@ https://drive.google.com/file/d/1q93SxGqR9UO2xN4gLhJheZzxc0GLzqIy/view?usp=drive
 
 ---
 
-## **Project Demo**
-
-### **Video**
-
-[Demo Video](#) *(Upload demo video link)*
-*The video showcases the functionality of the Emergency Supporting System.*
-
-### **Additional Demos**
-
-[More demo materials](#) *(If applicable)*
-
----
-
 ## **Team Contributions**
 
 - **Thansa Fathima**: Frontend Development, UI/UX Design, Documentation
